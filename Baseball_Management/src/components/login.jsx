@@ -92,53 +92,52 @@ function LoginBoard({ name, isLogged, setLogin, onButtonClick, NameOnChange, upd
         <div className="login-board">
             {!isLogged ? (
                 <div className="form-container">
+                    <h2 className="login-title">Iniciar sesión</h2>
                     <div className="form-group">
-                        <label>Email: </label>
-                        <input 
-                            type="text" 
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)} 
+                        <label className="input-label">Email:</label>
+                        <input
+                            type="text"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="login-input"
                         />
                     </div>
                     <div className="form-group">
-                        <label>Contraseña: </label>
+                        <label className="input-label">Contraseña:</label>
                         <div className="password-container">
-                            <input 
-                                type={showPassword ? "text" : "password"} 
-                                value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="login-input"
                             />
-                            <button 
-                                type="button" 
+                            <button
+                                type="button"
                                 onClick={togglePasswordVisibility}
+                                className="toggle-password"
                             >
                                 {showPassword ? "Ocultar" : "Mostrar"}
                             </button>
                         </div>
                     </div>
-                    <button 
-                        onClick={handleLogin} 
-                        className="login-button"
-                    >
+                    <button onClick={handleLogin} className="login-button">
                         Iniciar sesión
                     </button>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                 </div>
             ) : (
                 <div className="form-container">
-                    <p>Bienvenido, <strong>{roleName}</strong></p>
-                    {/* {teamId ? ` - Equipo ID: ${teamId}` : ' - Sin equipo asignado'} */}
-                    {/*<p>Permisos: {permissions.join(", ")}</p>*/}
-                    <button 
-                        onClick={handleLogout} 
-                        className="logout-button"
-                    >
+                    <p className="welcome-message">
+                        Bienvenido, <strong>{roleName}</strong>
+                    </p>
+                    <button onClick={handleLogout} className="logout-button">
                         Cerrar sesión
                     </button>
                 </div>
             )}
         </div>
     );
+    
 }
 
 export default LoginBoard;
