@@ -64,53 +64,74 @@ const PlayerSwapTable = ({ teamId }) => {
     return (
         <div className="player-swap-table">
             {/* Mensajes de carga y error */}
-            {loading && <p>Cargando datos...</p>}
-            {error && <p className="error">{error}</p>}
-
+            {loading && <p className="loading-message">Cargando datos...</p>}
+            {error && <p className="error-message">{error}</p>}
+    
             {teamData && (
                 <>
                     {/* Información del equipo */}
-                    <h1>{teamData.name} ({teamData.initials})</h1>
-                    <h3>{teamData.representative_entity}</h3>
-
+                    <h1 className="team-title">
+                        {teamData.name} ({teamData.initials})
+                    </h1>
+                    <h3 className="team-subtitle">{teamData.representative_entity}</h3>
+    
                     {/* Botón para actualizar los datos */}
-                    <button onClick={fetchData} className="refresh-button">Actualizar</button>
-
+                    <button onClick={fetchData} className="refresh-button">
+                        Actualizar
+                    </button>
+    
                     {/* Tabla de cambios de jugadores */}
-                    <table>
-                        <thead>
-                            <tr>
-                                <th onClick={() => handleSort("game_team")}>ID Equipo en el Campo</th>
-                                <th onClick={() => handleSort("old_player_name")}>Jugador Anterior</th>
-                                <th onClick={() => handleSort("new_player_name")}>Jugador Nuevo</th>
-                                <th onClick={() => handleSort("position_name")}>Posición</th>
-                                <th onClick={() => handleSort("date")}>Fecha</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {paginatedData.map((swap) => (
-                                <tr key={swap.id}>
-                                    <td>{swap.game_team}</td>
-                                    <td>{swap.old_player_name}</td>
-                                    <td>{swap.new_player_name}</td>
-                                    <td>{swap.position_name}</td>
-                                    <td>{swap.date}</td>
-                                    <td>
-                                        <button onClick={() => handleDelete(swap.id)}>Eliminar</button>
-                                    </td>
+                    <div className="table-container">
+                        <table className="swap-table">
+                            <thead>
+                                <tr>
+                                    <th onClick={() => handleSort("game_team")}>ID Equipo en el Campo</th>
+                                    <th onClick={() => handleSort("old_player_name")}>Jugador Anterior</th>
+                                    <th onClick={() => handleSort("new_player_name")}>Jugador Nuevo</th>
+                                    <th onClick={() => handleSort("position_name")}>Posición</th>
+                                    <th onClick={() => handleSort("date")}>Fecha</th>
+                                    <th>Acciones</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-
+                            </thead>
+                            <tbody>
+                                {paginatedData.map((swap) => (
+                                    <tr key={swap.id}>
+                                        <td>{swap.game_team}</td>
+                                        <td>{swap.old_player_name}</td>
+                                        <td>{swap.new_player_name}</td>
+                                        <td>{swap.position_name}</td>
+                                        <td>{swap.date}</td>
+                                        <td>
+                                            <button
+                                                onClick={() => handleDelete(swap.id)}
+                                                className="delete-button"
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+    
                     {/* Controles de paginación */}
                     <div className="pagination-controls">
-                        <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
+                        <button
+                            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                            className="pagination-button"
+                        >
                             Anterior
                         </button>
-                        <span>Página {currentPage} de {totalPages}</span>
-                        <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>
+                        <span className="pagination-info">
+                            Página {currentPage} de {totalPages}
+                        </span>
+                        <button
+                            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                            className="pagination-button"
+                        >
                             Siguiente
                         </button>
                     </div>
@@ -118,6 +139,7 @@ const PlayerSwapTable = ({ teamId }) => {
             )}
         </div>
     );
+    
 };
 
 export default PlayerSwapTable;
