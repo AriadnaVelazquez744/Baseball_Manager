@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './report.css';
 
 function ParamsSelector({ report_id, onTeamSelect, onPitcherSelect, onPitcherLNSelect, onSeasonSelect, onSeriesSelect }) {
     const [data, setData] = useState(null);
@@ -278,52 +279,58 @@ const ReportComponent = ({ report_id, report_name }) => {
     }
 
     return (
-        <div>
+        <div className="reports-container">
             <h1>{report_name}</h1>
 
-            <ParamsSelector
-                report_id={report_id}
-                onTeamSelect={setSelectedTeam}
-                onPitcherSelect={setSelectedPitcher}
-                onPitcherLNSelect={setSelectedPitcherLastname}
-                onSeasonSelect={setSelectedSeason}
-                onSeriesSelect={setSelectedSeries}
-            />
+            {/* Selector de parámetros con nueva clase */}
+            <div className="params-selector">
+                <ParamsSelector
+                    report_id={report_id}
+                    onTeamSelect={setSelectedTeam}
+                    onPitcherSelect={setSelectedPitcher}
+                    onPitcherLNSelect={setSelectedPitcherLastname}
+                    onSeasonSelect={setSelectedSeason}
+                    onSeriesSelect={setSelectedSeries}
+                />
+            </div>
 
-            <div>
-                <select value={exportFormat} onChange={(e) => setExportFormat(e.target.value)}>
+            {/* Controles de exportación con nueva clase */}
+            <div className="export-controls">
+                <select className="export-select" value={exportFormat} onChange={(e) => setExportFormat(e.target.value)}>
                     <option value="pdf">PDF</option>
                     <option value="csv">CSV</option>
                 </select>
-                <button onClick={handleExport}>Exportar</button>
+                <button className="export-button" onClick={handleExport}>Exportar</button>
             </div>
 
-            {/* Mostrar el JSON que se enviará }
-            {exportJson && (
-                <div>
-                    <h2>JSON que se enviará:</h2>
-                    <pre>{JSON.stringify(exportJson, null, 2)}</pre>
-                </div>
-            )}*/}
-
-            <ul>
+            {/* Contenedor de la tabla con clase actualizada */}
+            <div className="reports-table-container">
                 {Array.isArray(data) && data.length > 0 ? (
-                    data.map((item, index) => (
-                        <li key={index}>
-                            <strong>Elemento {index + 1}:</strong>
-                            <ul>
-                                {Object.keys(item).map(key => (
-                                    <li key={key}> {key}: {item[key]} </li>
+                    <table className="reports-table">
+                        <thead>
+                            <tr>
+                                {Object.keys(data[0]).map((key) => (
+                                    <th key={key}>{key}</th>
                                 ))}
-                            </ul>
-                        </li>
-                    ))
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((item, index) => (
+                                <tr key={index}>
+                                    {Object.keys(item).map((key) => (
+                                        <td key={key}>{item[key]}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 ) : (
                     <div>
                         <pre>{JSON.stringify(data, null, 2)}</pre>
                     </div>
                 )}
-            </ul>
+            </div>
+
         </div>
     );
 };
