@@ -1,0 +1,159 @@
+/* Baseball_Management/src/components/PlayerSwapForm.css */
+
+/* ================== ESTILOS GENERALES ================== */
+body, header {
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    color: #fff;
+}
+
+/* ================== CONTENEDOR PRINCIPAL ================== */
+.player-swap-form {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================== ENCABEZADO ================== */
+.team-title {
+    font-size: 62px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(235, 237, 243);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.team-subtitle {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #ddd;
+}
+
+/* ================== STEPPER ================== */
+.stepper {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.step {
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #ccc;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.step.active {
+    background: #5f2c82;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ================== TABLAS ================== */
+.scrollable-table {
+    max-height: 500px;
+    min-width: 600px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+th, td {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 15px;
+    font-size: 20;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+th {
+    background-color: rgba(95, 44, 130, 0.9);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* ================== BOTONES ================== */
+.select-button,
+.back-button,
+.next-button,
+.save-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 26;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.select-button,
+.next-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.back-button {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.save-button {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.select-button:hover,
+.next-button:hover {
+    background-color: #0056b3;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+
+.save-button:hover {
+    background-color: #218838;
+}
+
+/* ================== BOTONES DE NAVEGACIÓN ================== */
+.step-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    border-radius: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36;
+}
+
+/* ================== CAMBIOS SECCIÓN ================== */
+.changes-section {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.changes-section p {
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px 0;
+}
