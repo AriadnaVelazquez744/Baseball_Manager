@@ -448,62 +448,63 @@
     \end{tabular}
     
     ---
-    
-    \section*{Esquema de las clases definidas}
+
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.8\textwidth]{Copy of Gestion_de_campeonatos_de_beisbol.png}
+        \includegraphics[width=\textwidth]{tablas.png}
         \caption{Diagrama de gestión de campeonatos de béisbol}
-        \label{fig:gestion_campeonatos}
     \end{figure}
+    
+    \section*{Esquema de las clases definidas}
+    
     La aplicación sigue un flujo cliente-servidor, donde el frontend (React) y el backend (Django Rest Framework) se comunican a través de solicitudes HTTP. A continuación, se describe el flujo de información y procesamiento en cada capa de la aplicación:
 
-    \section*{Frontend (React)}
+    \subsection*{Frontend (React)}
     El frontend es responsable de la interfaz de usuario (UI) y la interacción con el usuario. Está construido con React, una biblioteca de JavaScript que permite crear interfaces dinámicas y reactivas. El flujo en el frontend es el siguiente:
     
-    \subsection*{Interfaz de Usuario (UI)}
+    \subsubsection*{Interfaz de Usuario (UI)}
     \begin{itemize}
         \item React renderiza componentes que representan la interfaz gráfica de la aplicación.
         \item Los componentes pueden ser formularios, listas, tablas, botones, etc., que permiten al usuario interactuar con la aplicación.
     \end{itemize}
     
-    \subsection*{Gestión del Estado}
+    \subsubsection*{Gestión del Estado}
     \begin{itemize}
         \item React utiliza un sistema de estado (por ejemplo, con \texttt{useState}, \texttt{useReducer} o bibliotecas como Redux) para manejar los datos que se muestran en la interfaz.
         \item El estado se actualiza dinámicamente en respuesta a las acciones del usuario (por ejemplo, hacer clic en un botón o enviar un formulario).
     \end{itemize}
     
-    \subsection*{Comunicación con el Backend}
+    \subsubsection*{Comunicación con el Backend}
     \begin{itemize}
         \item Cuando el usuario realiza una acción que requiere datos del servidor (por ejemplo, cargar una lista de equipos o enviar un formulario), React realiza una solicitud HTTP (GET, POST, PUT, DELETE) al backend a través de la API REST.
         \item Para realizar estas solicitudes, se utiliza \texttt{fetch} o bibliotecas como Axios.
     \end{itemize}
     
-    \subsection*{Renderizado Dinámico}
+    \subsubsection*{Renderizado Dinámico}
     \begin{itemize}
         \item Una vez que el backend responde con los datos solicitados, React actualiza el estado de la aplicación y re-renderiza los componentes para reflejar los cambios en la interfaz.
     \end{itemize}
     
-    \section*{Backend (Django Rest Framework)}
+    \subsection*{Backend (Django Rest Framework)}
     El backend es responsable de la lógica de negocio, el procesamiento de datos y la comunicación con la base de datos. Está construido con Django Rest Framework (DRF), que proporciona herramientas para crear APIs RESTful de manera eficiente. El flujo en el backend es el siguiente:
     
-    \subsection*{Solicitud HTTP}
+    \subsubsection*{Solicitud HTTP}
     \begin{itemize}
         \item Cuando el frontend realiza una solicitud HTTP (por ejemplo, una petición GET para obtener datos o POST para enviar datos), Django recibe la solicitud y la procesa.
     \end{itemize}
     
-    \subsection*{Enrutamiento (URLs)}
+    \subsubsection*{Enrutamiento (URLs)}
     \begin{itemize}
         \item Django utiliza un sistema de enrutamiento (definido en el archivo \texttt{urls.py}) para dirigir la solicitud al ViewSet o Vista correspondiente.
     \end{itemize}
     
-    \subsection*{Vistas (Viewsets)}
+    \subsubsection*{Vistas (Viewsets)}
     \begin{itemize}
         \item Los ViewSets (o Vistas) son responsables de manejar la lógica de la solicitud. En DRF, los ViewSets permiten realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) de manera simplificada.
         \item Las vistas interactúan con los serializadores para validar y transformar los datos entrantes o salientes.
     \end{itemize}
     
-    \subsection*{Serializadores}
+    \subsubsection*{Serializadores}
     Los serializadores en DRF son responsables de:
     \begin{itemize}
         \item Validar los datos enviados por el frontend (por ejemplo, datos de un formulario).
@@ -511,24 +512,24 @@
         \item Convertir los datos JSON recibidos del frontend en objetos de Django para su procesamiento.
     \end{itemize}
     
-    \subsection*{Modelos y Base de Datos}
+    \subsubsection*{Modelos y Base de Datos}
     \begin{itemize}
         \item Los modelos de Django representan la estructura de la base de datos. Cada modelo define una tabla y sus campos.
         \item Cuando es necesario acceder o modificar datos, las vistas interactúan con los modelos a través del ORM (Object-Relational Mapping) de Django.
         \item El ORM permite realizar consultas a la base de datos sin escribir SQL directamente, lo que simplifica el manejo de datos.
     \end{itemize}
     
-    \subsection*{Repositorios}
+    \subsubsection*{Repositorios}
     \begin{itemize}
         \item Se utilizan repositorios para abstraer la lógica de acceso a datos. Los repositorios actúan como una capa intermedia entre las vistas y los modelos, centralizando las operaciones de la base de datos.
     \end{itemize}
     
-    \subsection*{Respuesta HTTP}
+    \subsubsection*{Respuesta HTTP}
     \begin{itemize}
         \item Una vez que la vista procesa la solicitud y obtiene los datos necesarios, devuelve una respuesta HTTP al frontend. Esta respuesta suele ser un objeto JSON que contiene los datos solicitados o un mensaje de confirmación.
     \end{itemize}
     
-    \section*{Flujo Completo de una Solicitud}
+    \subsection*{Flujo Completo de una Solicitud}
     A continuación, se describe el flujo completo de una solicitud típica en la aplicación:
     
     \begin{enumerate}
@@ -558,6 +559,13 @@
             \item React recibe la respuesta, actualiza el estado de la aplicación y re-renderiza los componentes para mostrar los datos al usuario.
         \end{itemize}
     \end{enumerate}
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.9\textwidth]{flujo.png}
+        \caption{Diagrama de gestión de campeonatos de béisbol}
+    \end{figure}
+
     \section*{Esquema con el diseño de la aplicación}
     El diseño de la aplicación de Gestión de Campeonatos de Béisbol se fundamenta en la interacción 
     entre los distintos actores y los casos de uso definidos a continuación. \\ 
@@ -621,11 +629,10 @@
     \end{itemize}
     
 
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
-        \includegraphics[width=0.8\textwidth]{diagrama.png}
+        \includegraphics[width=0.5\textwidth]{diagrama.png}
         \caption{Diagrama de casos de uso}
-        \label{fig:gestion_campeonatos1}
     \end{figure}
     \section*{Solución propuesta}
     El presente sistema ha sido diseñado para optimizar la gestión de campeonatos de béisbol, 

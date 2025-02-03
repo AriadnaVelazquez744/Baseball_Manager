@@ -11,8 +11,6 @@
 \usepackage{float}
 \usepackage{hyperref}   
 
-
-
 \setlength{\parindent}{0pt}
 
 \begin{document}
@@ -68,6 +66,216 @@
 
     \section*{Breve explicación de cada una de las opciones del sistema}
 
+    \subsection*{Inicio de Sesión}
+    Para acceder al sistema, los usuarios deben iniciar sesión con sus credenciales.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Pantalla de inicio de sesión}
+    \end{figure}
+
+    
+    \subsection*{Sidebar en dependencia del rol}
+    En dependencia del rol del usiario autentificado, en el sidebar se mostraran diferentes tipos de vistas.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Sidebar para Administrador}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Sidebar para el Director Técnico}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Sidebar para los Usuarios Generales / Periodistas}
+    \end{figure}
+
+
+    \subsection*{Operaciones que puede realizar un Administrador}
+    Los administradores tienen acceso a una vista `Formularios' en la cual tiene acceso a todas las tablas de la Base de Datos
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Vista de Formularios}
+    \end{figure}
+
+    Los administradores pueden realizar cualquier tipo de operaciones CRUD (Create, Read, Update, Deleate) sobre todas las tablas.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Leer las filas de una tabla}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Crear una nueva fila}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Modificar una fila existente}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Eliminar una fila}
+    \end{figure}
+
+    \subsection*{Operaciones que puede realizar un Director Técnico}
+    Un Director Técnico puede ver las diferentes alineaciones que posee su equipo con sus cambios
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Alineaciones de un Equipo}
+    \end{figure}
+
+    Un Director Técnico puede efectuar un cambio entre dos jugadores de su equipo que ocurrio en un determinado juego.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Cambio de jugadores}
+    \end{figure}
+
+
+    \subsection*{Operaciones que puede realizar cualquier tipo de usuario}
+
+    \subsubsection*{Consultas}
+    Un usario en general realizar diferentes consultas sobre los series, equipos, peloteros, ..., en fin, cualquier tipo de información disponibles 
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Vista de las Consultas}
+    \end{figure}
+
+    En una consulta un usario puede realizar diferentes operaciones seleccionadas, como listar y filtar por nombre, numero o fecha.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Listar una tabla de la consulta}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Filtrar por nombre una columna de una consulta}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Filtrar por numero una columna de una consulta}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Filtrar por fecha una columna de una consulta}
+    \end{figure}
+
+    \subsection{Estadísticas}
+    Un unario cualquiera tiene acceso a diferentes reportes seleccionados sobre las estadísticas de los Campeonatos de Béisbol.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Vista de las Reportes}
+    \end{figure}
+
+    Un usuario puede filtar un reporte por un campo seleccionado.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Filtrar campos en los Reportes}
+    \end{figure}
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte exportado en formato PDF}
+    \end{figure}
+
     \section*{Breve explicación de cada una de las salidas del sistema}
+
+    Un usuario puede exportar uno o varios reportes a determinados formatos (PDF o CSV por default)
+
+    \subsection*{Reporte de Equipos Ganadores y Directores Técnicos}
+    Este reporte muestra los equipos ganadores y sus directores técnicos por temporada.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Equipos Ganadores y Directores Técnicos}
+    \end{figure}
+
+    \subsection*{Reporte de Jugadores Estrella}
+    Este reporte muestra los nombres y posiciones de los jugadores estrella y su efectividad por serie.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Jugadores Estrella}
+    \end{figure}
+
+    \subsection*{Reporte de Equipos por Serie}
+    Este reporte lista los equipos en primer y último lugar por serie, clasificados por tipo.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Equipos por Serie}
+    \end{figure}
+
+    \subsection*{Reporte de Series con Mayor y Menor Cantidad de Juegos}
+    Este reporte muestra las series con mayor y menor cantidad de juegos celebrados.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Series con Mayor y Menor Cantidad de Juegos}
+    \end{figure}
+
+    \subsection*{Reporte de Lanzadores}
+    Este reporte muestra el total de juegos ganados y el promedio de carreras limpias permitidas por un lanzador.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Lanzadores}
+    \end{figure}
+
+    \subsection*{Reporte de Efectividad por Posición}
+    Este reporte muestra la efectividad de los jugadores por posición.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Efectividad por Posición}
+    \end{figure}
+
+    \subsection*{Reporte de Jugadores de un Equipo Específico}
+    Este reporte muestra los jugadores de un equipo específico en una serie determinada.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{}
+        \caption{Reporte de Jugadores de un Equipo Específico}
+    \end{figure}
 
 \end{document}
