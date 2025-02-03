@@ -14,11 +14,11 @@
 
 .logo {
   position: relative;
-  left: 30%;
+  left: 20%;
   height: 130px;
-  width: 130px;
-  clip-path: circle(50%);
-  margin-bottom: 10px;
+  width: 150px;
+  clip-path: circle(47%);
+  margin-bottom: 15px;
 }
 
 /* Contenedor del Sidebar */

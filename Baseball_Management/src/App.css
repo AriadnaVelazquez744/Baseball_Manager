@@ -35,8 +35,8 @@ body {
     color: black;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra */
-    margin-left: 300px; /* Añadir esta línea para tener en cuenta el ancho de la barra lateral */
-    width: calc(100% - 350px); /* Añadir esta línea para ajustar el ancho */
+    margin-left: 330px; /* Añadir esta línea para tener en cuenta el ancho de la barra lateral */
+    width: calc(100% - 380px); /* Añadir esta línea para ajustar el ancho */
 }
 
 .App-link {
@@ -119,7 +119,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px;
+    width: 280px;
     height: 100vh;
     background-color: rgba(47, 79, 79, 0.1);
     padding: 20px;

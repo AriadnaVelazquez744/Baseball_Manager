@@ -1,129 +1,410 @@
-html,
+/* ================== RESET GLOBAL ================== */
+html, 
 body, header {
-	height: 100%;
+    height: 100%;
     margin: 0;
 }
 
 body, header {
-    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    background: linear-gradient(45deg, #49a09d, #5f2c82); /* Fondo azul degradado original */
     font-family: sans-serif;
     font-weight: 100;
-    background-size: cover; /* Asegura que el fondo cubra todo el área visible */
-    background-attachment: fixed; /* Fija el fondo para evitar que se mueva al hacer scroll */
-    background-repeat: no-repeat; /* Evita que el fondo se repita */
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
+/* ================== CONTENEDOR PRINCIPAL ================== */
 .base-crud-container {
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     padding: 20px;
-    max-width: 1200px; /* Mantener un ancho máximo mayor */
-    margin: 0 auto; /* Centrar el contenedor */
-    min-width: 800px; 
-    text-align: center; /* Centrar el texto */
-}
-
-.edit-button, .delete-button, .add-button, .refresh-button {
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right: 10px; /* Aumentar el margen derecho para más espacio */
-}
-
-.edit-button {
-    background-color: #808080; /* Color gris para el botón de editar */
-}
-
-.delete-button {
-    background-color: #f44336; /* Color rojo para el botón de eliminar */
-}
-
-.add-button{
-    background-color: rgb(54, 183, 34);
-}
-
-.refresh-button{
-    background-color: orange;
-}
-
-.edit-button:hover, .delete-button:hover {
-    opacity: 0.8;
-}
-
-.actions, .form-actions {
-    margin-top: 20px;
-    text-align: center; /* Centrar el contenido */
-}
-
-.actions button, .form-actions button {
-    margin: 0 10px; /* Márgenes horizontales */
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block; /* Asegurar que se alineen horizontalmente */
-    text-align: center; /* Centrar el texto del botón */
-}
-
-.add-button, .refresh-button {
-    margin-left: 20px;
-    margin-top: 15px;
-    height: 30px;
-    width: 200px;
-}
-
-.item-form {
-    margin-top: 20px;
-}
-
-.item-list {
+    max-width: 1400px;
+    min-width: 800px;
     margin: 0 auto;
-    margin-bottom: 20px;
+    text-align: center;
+}
+
+.base-crud-container h1 {
+    font-size: 64px;  /* Aumenta el tamaño */
+    font-weight: bold; /* Hace el título más prominente */
+    margin-bottom: 40px; /* Agrega espacio debajo */
+    color: rgb(235, 237, 243); /* Asegura visibilidad sobre el fondo */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Da un efecto de sombra para mejor contraste */
+}
+
+/* ================== TABLA ================== */
+.item-list {
+    margin: 20px auto;
     overflow-x: auto;
-    background-color: #fff;
+    background: linear-gradient(45deg, #0e599b, #6f3fa8); /* Degradado más claro para integrar con el fondo */
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 100%;
 }
 
 .item-list table {
-    margin: 0 auto; /* Centrar la tabla horizontalmente */
     width: 100%;
-    border-collapse: collapse; /* Asegurar que las celdas compartan bordes */
+    border-collapse: collapse;
+    min-width: 50rem;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente para mejorar legibilidad */
 }
 
 .item-list th, .item-list td {
-    text-align: center; /* Alinear las celdas al centro */
-    border: 1px solid #ccc; /* Agregar borde a cada celda */
-    padding: 8px; /* Añadir algo de padding para mejor apariencia */
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: white; /* Mejor contraste */   /*8*/
 }
 
-.item-list tr:hover {
-    background-color: #6b9fcf; /* Color de fondo al pasar el ratón */
-    cursor: pointer; /* Cambiar el cursor a pointer */
+.item-list th {
+    background-color: rgba(95, 44, 130, 0.9);
+    font-weight: bold;
+}
+
+/* ================== ORDENAMIENTO (SORTABLE) ================== */
+.item-list th.sortable {
+    cursor: pointer;
+    position: relative;
+    padding-right: 25px;
+}
+
+.item-list th.sortable button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.item-list th.sortable button:hover {
+    background-color: #7a3fb9;
+}
+
+/* Icono de ordenamiento */
+.item-list th.sortable button::after {
+    content: "⇅";
+    font-size: 14px;
+    margin-left: 5px;
+    color: rgb(0, 0, 0);
+    opacity: 0.6;
+    position: absolute;
+}
+
+/* Estado de orden ascendente */
+.item-list th.sortable.asc button::after {
+    content: "🔼";
+    opacity: 1;
+}
+
+/* Estado de orden descendente */
+.item-list th.sortable.desc button::after {
+    content: "🔽";
+    opacity: 1;
+}
+
+/* ================== FILTROS DE BÚSQUEDA ================== */
+.item-list input[type="text"], 
+.item-list input[type="number"], 
+.item-list input[type="date"] {
+    width: calc(100% - 50px);
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.item-list input[type="text"]:focus, 
+.item-list input[type="number"]:focus, 
+.item-list input[type="date"]:focus {
+    border-color: rgb(176, 46, 223);
+    outline: none;
+    box-shadow: 0 0 5px rgba(60, 211, 206, 0.5);
+}
+
+/* ================== PAGINADOR ================== */
+.pagination-controls {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-controls button {
+    background-color: #5f2c82;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 45px;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls span {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semi-transparente para mayor visibilidad */
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+/* ================== BOTONES ================== */
+.edit-button, .delete-button, .add-button, .refresh-button {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 55px;
+    font-weight: bold;
+}
+
+.edit-button {
+    background-color: #1ed81b;
+}
+
+.delete-button {
+    background-color: #cc1f12;
+}
+
+.add-button {
+    background-color: rgb(54, 183, 34);
+}
+
+.refresh-button {
+    background-color: rgb(30, 43, 227);
+}
+
+.edit-button:hover, .delete-button:hover, .add-button:hover, .refresh-button:hover {
+    opacity: 0.8;
+}
+
+/* ================== ERRORES ================== */
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+/* ================== FORMULARIO ================== */
+.item-form {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15); /* Transparencia para que se integre */
+    border-radius: 55px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.item-form h2 {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el label e input */
     margin-bottom: 15px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
+    width: 30%; /* Ajusta el ancho del label */
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    min-width: 120px; /* Asegura que los labels no sean demasiado pequeños */
 }
 
-.form-group input {
-    width: 100%;
+.form-group input, 
+.form-group select {
+    width: 65%;
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 55px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);  /**/
+    color: white;
 }
 
-.error-message {
-    color: red;
-    font-size: 0.6em;
-    margin-top: 0.75em;
-  }
-  
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: #5f2c82;
+    outline: none;
+    box-shadow: 0 0 5px rgba(95, 44, 130, 0.5);
+}
+
+/* ================== AJUSTE ESPECÍFICO PARA INPUTS NUMÉRICOS ================== */
+.form-group input[type="number"] {
+    text-align: left; /* Para mejor legibilidad de números */
+}
+
+/* ================== FORMULARIO - ACCIONES ================== */
+.form-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 55px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.form-actions button:first-child {
+    background-color: #3cd3ce;
+    color: white;
+}
+
+.form-actions button:last-child {
+    background-color: #cc1f12;
+    color: white;
+}
+
+.form-actions button:hover {
+    opacity: 0.8;
+}
+
+/* ================== SELECTOR (DROPDOWN) ================== */
+.form-group select {
+    width: 65%;
+    max-width: 500px;
+    min-width: 250px;
+    padding-right: 30px; /* Espacio para la flecha */
+    padding-left: (100% - 30px) ;
+    appearance: none;
+    background-size: 20px;
+    border-radius: 45px;
+}
+
+/* ================== INPUTS NUMÉRICOS EN FORMULARIO ================== */
+.form-group input[type="number"] {
+    width: calc(100% - 40px); /* Ajusta el ancho sin que choque con los labels */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 55px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Cuando el input está en foco */
+.form-group input[type="number"]:focus {
+    border-color: #3cd3ce;
+    outline: none;
+    box-shadow: 0 0 5px rgba(60, 211, 206, 0.5);
+}
+
+/* ================== INPUTS NUMÉRICOS CON BOTONES (MIN/MAX) ================== */
+.number-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 55px;
+    padding: 5px;
+}
+
+.number-input-container input {
+    width: 70%; /* Ajusta el ancho para que no ocupe todo el espacio */
+    text-align: center;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+}
+
+/* Botones de incremento y decremento */
+.number-input-container button {
+    background-color: #3cd3ce;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.number-input-container button:hover {
+    background-color: #2ba5a0;
+}
+
+/* ================== INPUT DE CONTRASEÑA ================== */
+.form-group.password {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.form-group.password label {
+    width: 30%;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    min-width: 120px;
+}
+
+/* Contenedor que envuelve el input y el botón */
+.password-container {
+    display: flex;
+    align-items: center;
+    width: 65%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 55px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+}
+
+/* Input de contraseña */
+.password-container input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+}
+
+/* Elimina el borde duplicado */
+.password-container input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+/* Botón de visibilidad de contraseña */
+.toggle-password {
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 55px;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.toggle-password:hover {
+    background: rgba(255, 255, 255, 0.5);
+}

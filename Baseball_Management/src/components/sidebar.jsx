@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from './Cuddly_Flying_Spaghetti_Monster.jpg'
+import Logo from '../logo.jpg'
 import './sidebar.css';
 
 function Sidebar({ role, onOptionSelect, onModalOpen }) {
@@ -132,7 +132,7 @@ function Sidebar({ role, onOptionSelect, onModalOpen }) {
       </div>
 
       <div className="sidebar-footer">
-        <button onClick={onModalOpen}>Account</button>
+        <button onClick={onModalOpen}>Cuenta</button>
       </div>
     </div>
   );
